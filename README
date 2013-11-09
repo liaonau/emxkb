@@ -1,0 +1,3 @@
+X11 keyboard switcher.
+emxkb switches Emacs input method instead xkb group
+if focused window is Emacs' window.
