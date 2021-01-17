@@ -124,15 +124,15 @@ int send_key_to_emacs(Display *display, int window_id, int group)
     {
     case 0:
         event.state = Mod4Mask;
-        /* event.keycode = XKeysymToKeycode(display, XStringToKeysym("F31")); */
         break;
     case 1:
         event.state = Mod3Mask;
-        /* event.keycode = XKeysymToKeycode(display, XStringToKeysym("F32")); */
+        break;
+    case 2:
+        event.state = Mod4Mask & Mod3Mask;
         break;
     default:
         event.state = Mod4Mask;
-        /* event.keycode = XKeysymToKeycode(display, XStringToKeysym("F31")); */
         break;
     }
 
@@ -163,7 +163,7 @@ int lock_group(int window_id, int group)
         XSetInputFocus(xkb_display, window_id, RevertToParent, CurrentTime);
         XSync(xkb_display, False);
     }
-    if (!XkbLockGroup(xkb_display, XkbUseCoreKbd, abs(group % 4)))
+    if (!XkbLockGroup(xkb_display, XkbUseCoreKbd, abs(group)))
         return fprintf_return_error(False, "lock_group(): Can't lock group");
 
     XSync(xkb_display, False);
