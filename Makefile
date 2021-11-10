@@ -1,7 +1,7 @@
 PKGS      = x11
 
 INCS     := $(shell pkg-config --cflags $(PKGS)) -I./
-CFLAGS   := -std=gnu11 -ggdb -W -Wall -Wextra $(INCS) $(CFLAGS)
+CFLAGS   := -std=gnu18 -ggdb -W -Wall -Wextra $(INCS) $(CFLAGS)
 
 LIBS     := $(shell pkg-config --libs $(PKGS))
 LDFLAGS  := $(LIBS) $(LDFLAGS) -Wl,--export-dynamic

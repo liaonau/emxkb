@@ -51,7 +51,8 @@ int main(int argc, char *argv[])
 
     focus_parent = get_client(display, focus);
     if (!focus_parent)
-        return fprintf_return_error(3, "Can't get focus parent");
+        focus_parent = focus; /* root Window? */
+        /*return fprintf_return_error(3, "Can't get focus parent");*/
 
     XGetClassHint(display, focus_parent, &class_hint);
     if (class_hint.res_class != NULL
